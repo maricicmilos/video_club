@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-10">
-            <h2>Users</h2>
+            <h2>Users</h2><h2>new</h2>
             <table class="table table-hover">
                 <thead>
                 <tr>
