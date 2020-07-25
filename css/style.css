@@ -1,0 +1,15 @@
+body {
+    padding: 2.4em;
+}
+#header {
+    margin-bottom: 1.2em;
+}
+#header img {
+    width: 56px;
+}
+#mainContent {
+    min-height: 60vh;
+}
+#list-tab {
+    margin-top: 2.8em;
+}
