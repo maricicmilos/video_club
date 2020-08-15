@@ -1,4 +1,6 @@
-<?php $date = date('y'); ?>
+<?php
+    require ('sys/init.php');
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +29,7 @@
             </div>
         </div>
         <div class="col-10">
-            <h2>Users</h2><h2>new</h2>
+            <h2>Users</h2>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -42,63 +44,38 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="userRow">
-                    <th scope="row">1</th>
-                    <td><input type="checkbox" name="user" class="userCheckbox" id="1"></td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>otto@examle.com</td>
-                    <td>
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">View Profile</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="userRow">
-                    <th scope="row">2</th>
-                    <td><input type="checkbox" class="user" id="2"></td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>jacob@example.com</td>
-                    <td>
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">View Profile</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="userRow">
-                    <th scope="row">3</th>
-                    <td><input type="checkbox" class="user" id="3"></td>
-                    <td>Larry</td>
-                    <td>Flint</td>
-                    <td>lerrybird@examle.com</td>
-                    <td>
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">View Profile</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                <?php
+                    $users = User::getUsersAsObjects();
+                    foreach ($users as $user){
+                        ?>
+                        <tr class="userRow">
+                            <th scope="row"><?= $user->getUserId(); ?></th>
+                            <td><input type="checkbox" name="user" class="userCheckbox" id="<?=$user->getUserId(); ?>"></td>
+                            <td><?= ucfirst($user->getFirstName()); ?></td>
+                            <td><?= ucfirst($user->getLastName()); ?></td>
+                            <td><?= $user->getEmail(); ?></td>
+                            <td>
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary toggleMenu" type="button">
+                                        <span>Actions</span>
+                                        <svg width="1em" height="0.7em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="edit_user.php?id=<?= $user->getUserId(); ?>">Edit</a>
+                                        <a class="dropdown-item" href="remove_user.php?id=<?= $user->getUserId(); ?>">Remove</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">View Profile</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                ?>
                 </tbody>
             </table>
-
         </div>
     </div>
     <div class="row">
@@ -114,6 +91,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <!-- Optional JavaScript -->
-<script src="js/index.js"></script>
+<script src="js/script.js"></script>
+
+
 </body>
 </html>

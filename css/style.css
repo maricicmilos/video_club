@@ -8,8 +8,48 @@ body {
     width: 56px;
 }
 #mainContent {
-    min-height: 60vh;
+    min-height: 70vh;
+}
+#mainContent .selected {
+    border: 2px solid #5170ED;
 }
 #list-tab {
     margin-top: 2.8em;
+}
+
+.input-group-prepend {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+/* Additional classes */
+
+.hidden {
+    display: none;
+}
+
+.errorMessage {
+    padding: 2px 4px;
+    background-color: #ff8485;
+    color: #fff1fc;
+    font-weight: 700;
+    border: 2px solid #ff5267;
+    border-radius: 2px;
 }
