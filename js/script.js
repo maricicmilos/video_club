@@ -26,7 +26,6 @@ $(document).ready(function () {
 
     $('.dropdown-item').on('click', function(event){
         event.stopPropagation();
-        let link = $(this).getAttribute('href');
     })
 
     $('.dropdown-menu').on('mouseout', function (event) {
